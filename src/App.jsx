@@ -1,7 +1,10 @@
+import Board from './components/Board.jsx';
+
 function App() {
   return (
     <>
-      <h1>Odin Memory Card</h1>
+      <h1 className="title">Odin Memory Card</h1>
+      <Board />
     </>
   );
 }
