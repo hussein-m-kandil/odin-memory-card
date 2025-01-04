@@ -1,7 +1,7 @@
 import ImageCard from './ImageCard.jsx';
 import CardsLoader from './CardsLoader.jsx';
 
-function Board({ cardImages }) {
+function Board({ cardImages, onCardClicked }) {
   const getAltFromImgSrc = (imgSrc) => {
     const alt = imgSrc.split('/').at(-2).replaceAll(/%|_|-/g, ' ');
     return alt ? `${alt[0].toUpperCase()}${alt.slice(1) || ''}` : null;
@@ -12,7 +12,12 @@ function Board({ cardImages }) {
       {cardImages ? (
         Array.isArray(cardImages) ? (
           cardImages.map(({ id, src }) => (
-            <ImageCard key={id} src={src} alt={getAltFromImgSrc(src)} />
+            <ImageCard
+              key={id}
+              src={src}
+              alt={getAltFromImgSrc(src)}
+              onClick={onCardClicked}
+            />
           ))
         ) : (
           <div className="error">
