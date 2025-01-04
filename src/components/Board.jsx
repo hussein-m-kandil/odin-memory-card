@@ -1,15 +1,14 @@
-import Card from './Card.jsx';
+import ImageCard from './ImageCard.jsx';
+import CardsLoader from './CardsLoader.jsx';
 
-function Board() {
-  const contents = new Array(9).fill(null).map((_, i) => i);
-
+function Board({ cardImages }) {
   return (
-    <div className="board">
-      {contents.map((data) => (
-        <Card key={data}>
-          <span>{data}</span>
-        </Card>
-      ))}
+    <div className={`board${cardImages ? ' grid' : ''}`}>
+      {cardImages ? (
+        cardImages.map((src) => <ImageCard key={src} src={src} />)
+      ) : (
+        <CardsLoader />
+      )}
     </div>
   );
 }
