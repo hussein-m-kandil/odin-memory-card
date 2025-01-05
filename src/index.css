@@ -37,6 +37,20 @@ body {
   padding: 0.5rem 1rem;
 }
 
+button {
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+button:focus {
+  outline-color: #eee;
+}
+
 .title {
   text-align: center;
   margin: 1rem 0;

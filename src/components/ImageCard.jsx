@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import loadingImg from '/loading.gif';
 
-function ImageCard(props) {
+function ImageCard({ onClick, ...imgProps }) {
   const [loading, setLoading] = useState(true);
 
   const handleLoadEnd = () => setLoading(false);
 
   return loading ? (
-    <div className="card" style={{ position: 'relative' }}>
+    <button onClick={onClick} className="card" style={{ position: 'relative' }}>
       <img
-        {...props}
+        {...imgProps}
         style={{ display: 'none' }}
         onLoad={handleLoadEnd}
         onError={handleLoadEnd}
@@ -19,11 +19,11 @@ function ImageCard(props) {
         alt="Loading..."
         style={{ width: '32px', height: '32px', position: 'absolute' }}
       />
-    </div>
+    </button>
   ) : (
-    <div className="card">
-      <img {...props} />
-    </div>
+    <button onClick={onClick} className="card">
+      <img {...imgProps} />
+    </button>
   );
 }
 
