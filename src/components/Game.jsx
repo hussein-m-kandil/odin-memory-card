@@ -31,7 +31,11 @@ function Game() {
   return (
     <>
       {Array.isArray(images) && (
-        <Info score={memory.length} highScore={highScore} />
+        <Info
+          score={memory.length}
+          highScore={highScore}
+          maxScore={imagesCount}
+        />
       )}
       <Board cardImages={images} onCardClicked={handleCardClicked} />
     </>
