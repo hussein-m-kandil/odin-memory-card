@@ -45,6 +45,9 @@ button {
   padding: 0;
   border: none;
   box-shadow: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
 button:focus {
@@ -109,6 +112,44 @@ button:focus {
 
 .info .value {
   font-size: 1.2em;
+}
+
+.modal img {
+  display: block;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.modal-title {
+  margin: 0 auto 1rem;
+}
+
+.modal-score {
+  margin-top: 0;
+  font-weight: 700;
+}
+
+.modal-btn {
+  color: #eee;
+  font-weight: 700;
+  border: 2px solid #eee;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto 0;
+  width: fit-content;
+}
+
+.modal-btn:focus {
+  outline: none;
+  box-shadow: 0 0 7px 3px #eee7;
+}
+
+.modal-btn:active {
+  transform: scale(0.95);
 }
 
 @media (width > 720px) {

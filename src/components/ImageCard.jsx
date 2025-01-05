@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import loadingImg from '/loading.gif';
+import extractAltFromSrc from '../utils/extractAltFromSrc.js';
 
 function ImageCard({ src, onClick }) {
   const [loading, setLoading] = useState(true);
-
-  const extractAltFromSrc = (imgSrc) => {
-    const alt = imgSrc.split('/').at(-2).replaceAll(/%|_|-/g, ' ');
-    return alt ? `${alt[0].toUpperCase()}${alt.slice(1) || ''}` : null;
-  };
 
   const handleLoadEnd = () => setLoading(false);
 

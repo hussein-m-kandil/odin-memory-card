@@ -7,7 +7,11 @@ function Board({ cardImages, onCardClicked }) {
       {cardImages ? (
         Array.isArray(cardImages) ? (
           cardImages.map(({ id, src }) => (
-            <ImageCard key={id} src={src} onClick={() => onCardClicked(id)} />
+            <ImageCard
+              key={id}
+              src={src}
+              onClick={(e) => onCardClicked(id, e)}
+            />
           ))
         ) : (
           <div className="error">
