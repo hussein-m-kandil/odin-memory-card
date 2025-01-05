@@ -16,7 +16,7 @@ function Board({ cardImages, onCardClicked }) {
               key={id}
               src={src}
               alt={getAltFromImgSrc(src)}
-              onClick={onCardClicked}
+              onClick={() => onCardClicked(id)}
             />
           ))
         ) : (
