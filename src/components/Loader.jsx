@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function CardsLoader() {
+function Loader() {
   const [ellipsesLen, setEllipsesLen] = useState(0);
 
   const ellipses = ''.padEnd(ellipsesLen, '.');
@@ -11,10 +11,10 @@ function CardsLoader() {
   }, [ellipsesLen]);
 
   return (
-    <div style={{ whiteSpace: 'nowrap', width: '3.5em', margin: '0 auto' }}>
+    <p style={{ whiteSpace: 'nowrap', width: '3.5em', margin: '0 auto' }}>
       {`${'Loading'}${ellipses}`}
-    </div>
+    </p>
   );
 }
 
-export default CardsLoader;
+export default Loader;

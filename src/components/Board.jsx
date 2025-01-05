@@ -1,5 +1,5 @@
 import ImageCard from './ImageCard.jsx';
-import CardsLoader from './CardsLoader.jsx';
+import Loader from './Loader.jsx';
 
 function Board({ cardImages, onCardClicked }) {
   return (
@@ -16,7 +16,7 @@ function Board({ cardImages, onCardClicked }) {
           </div>
         )
       ) : (
-        <CardsLoader />
+        <Loader />
       )}
     </div>
   );
