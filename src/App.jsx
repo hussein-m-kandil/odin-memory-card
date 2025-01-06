@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Info from './components/Info.jsx';
 import Board from './components/Board.jsx';
 import ResultModal from './components/ResultModal.jsx';
@@ -69,20 +70,25 @@ function App() {
 
   return (
     <>
-      <div className="header">
-        <h1 className="title">Odin Memory Card</h1>
-        {Array.isArray(images) && (
-          <Info
-            score={memory.length}
-            maxScore={images.length}
-            highScore={result.highScore}
-          />
-        )}
-      </div>
-      <Board cardImages={images} onCardClicked={handleCardClicked} />
-      {result.info && (
-        <ResultModal info={result.info} onClose={handleModalClose} />
+      {createPortal(
+        <>
+          <h1 className="title">Odin Memory Card</h1>
+          {Array.isArray(images) && (
+            <Info
+              score={memory.length}
+              maxScore={images.length}
+              highScore={result.highScore}
+            />
+          )}
+        </>,
+        document.getElementById('header')
       )}
+      <Board cardImages={images} onCardClicked={handleCardClicked} />
+      {result.info &&
+        createPortal(
+          <ResultModal info={result.info} onClose={handleModalClose} />,
+          document.body
+        )}
     </>
   );
 }
