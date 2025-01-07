@@ -2,18 +2,31 @@ import { useEffect, useRef } from 'react';
 import extractAltFromSrc from '../utils/extractAltFromSrc';
 
 function ResultModal({ info, onClose }) {
+  const closeBtnRef = useRef(null);
   const modalBodyRef = useRef(null);
-  const closeBtn = useRef(null);
 
   useEffect(() => {
-    closeBtn.current?.focus();
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
+      closeBtnRef.current?.focus();
       modalBodyRef.current?.scrollIntoView({
         behavior: 'instant',
         inline: 'center',
         block: 'center',
       });
-    }, 100);
+    }, 0);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  useEffect(() => {
+    const rootElement = document.documentElement;
+    const originalRootPosition = rootElement.style.position;
+    rootElement.style.position = 'relative';
+    return () => {
+      rootElement.style.position = originalRootPosition;
+      if (!rootElement.getAttribute('style')) {
+        rootElement.removeAttribute('style');
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -28,11 +41,7 @@ function ResultModal({ info, onClose }) {
       }
     };
     document.addEventListener('focusin', trapFocus);
-    document.documentElement.setAttribute('style', 'position: relative;');
-    return () => {
-      document.removeEventListener('focusin', trapFocus);
-      document.documentElement.removeAttribute('style');
-    };
+    return () => document.removeEventListener('focusin', trapFocus);
   }, []);
 
   const handleEscapeKeyPress = (e) => {
@@ -68,7 +77,7 @@ function ResultModal({ info, onClose }) {
           type="button"
           className="modal-btn"
           onClick={onClose}
-          ref={closeBtn}
+          ref={closeBtnRef}
         >
           OK!
         </button>
