@@ -6,8 +6,20 @@ import ResultModal from './components/ResultModal.jsx';
 import shuffleArray from './utils/shuffleArray.js';
 import fetchUniqueImageSources from './utils/fetchImageSources.js';
 
+const HIGH_SCORE_KEY = 'high_score';
+
+let highScore;
+
+try {
+  highScore = JSON.parse(localStorage.getItem(HIGH_SCORE_KEY));
+} catch {
+  console.log('Could not get the high score from the local storage!');
+}
+
+if (!highScore) highScore = 0;
+
 function App() {
-  const [result, setResult] = useState({ highScore: 0, info: null });
+  const [result, setResult] = useState({ highScore, info: null });
   const [images, setImages] = useState(null);
   const [memory, setMemory] = useState([]);
   const lastFocusedCardRef = useRef(null);
@@ -72,8 +84,13 @@ function App() {
   };
 
   const handleModalClose = () => {
-    setResult({ ...result, info: null });
     setMemory([]);
+    setResult({ ...result, info: null });
+    try {
+      localStorage.setItem(HIGH_SCORE_KEY, JSON.stringify(result.highScore));
+    } catch {
+      console.log('Could not save the high score in the local storage!');
+    }
   };
 
   return (
