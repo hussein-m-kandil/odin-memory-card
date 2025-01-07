@@ -11,17 +11,13 @@ html {
   color: #eee;
 }
 
-::-webkit-scrollbar-button {
-  background: #333;
-}
-
 ::-webkit-scrollbar {
-  background: #222;
-  width: 12px;
+  background: transparent;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #555;
+  background: #222;
 }
 
 *,
@@ -32,8 +28,11 @@ html {
 
 body {
   margin: 0 auto;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100svh;
   max-width: 1200px;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 button {
@@ -56,7 +55,7 @@ button:focus {
 .header {
   width: 100%;
   background-color: #111;
-  padding: 1.5rem 1rem 0.75rem;
+  padding: 1.5rem 1rem 0.5rem;
   position: sticky;
   top: 0;
 }
@@ -83,9 +82,15 @@ button:focus {
   font-size: 1.2em;
 }
 
-.board {
+.main {
   padding: 0.5rem 1rem;
-  border-radius: 1rem;
+  overflow: auto;
+  display: grid;
+  place-items: center;
+}
+
+.board {
+  width: 100%;
   text-align: center;
 }
 
@@ -136,12 +141,11 @@ button:focus {
 }
 
 .result-modal .modal-body {
+  padding: 1.5rem 1rem;
   border-radius: 1rem;
   margin: 1rem auto;
   width: 85vw;
-  padding: 2rem;
   max-width: 500px;
-  min-height: 300px;
   text-align: center;
   background-color: #111;
 }
@@ -150,8 +154,8 @@ button:focus {
   display: block;
   margin: 0 auto;
   aspect-ratio: 1;
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 150px;
+  max-height: 150px;
   object-fit: cover;
   border-radius: 1rem;
 }
