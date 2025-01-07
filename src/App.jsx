@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     // Extra count added on fetch, so keep the count up to 32 to avoid exceeding 50 (API limit)
     let [validData, invalidateData] = [true, () => (validData = false)];
-    fetchUniqueImageSources(18)
+    fetchUniqueImageSources(12)
       .then((sources) => {
         if (validData) {
           setImages(sources.map((src, id) => ({ id, src })));
