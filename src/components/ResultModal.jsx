@@ -75,7 +75,17 @@ function ResultModal({ info, onClose }) {
         {info.src ? (
           <img src={info.src} alt={extractAltFromSrc(info.src)} />
         ) : (
-          <img src={goldenCup} alt="Winner's golden cup." />
+          <figure>
+            <img src={goldenCup} alt="Winner's golden cup." />
+            <figcaption>
+              <a
+                className="attribute"
+                href="https://www.freepik.com/free-vector/golden-winners-cup_4320674.htm"
+              >
+                Golden Winners Cup From Freepik
+              </a>
+            </figcaption>
+          </figure>
         )}
         <p className="modal-message">{info.message}</p>
         <button

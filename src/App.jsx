@@ -97,7 +97,13 @@ function App() {
     <>
       {createPortal(
         <>
-          <h1 className="title">Odin Memory Card</h1>
+          <h1 className="title">
+            Odin Memory Card
+            <br />
+            <a className="attribute" href="https://dog.ceo/dog-api">
+              Powered by Dog API
+            </a>
+          </h1>
           {Array.isArray(images) && (
             <Info
               score={memory.length}
