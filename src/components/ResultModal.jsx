@@ -6,32 +6,7 @@ const goldenCup = new Image();
 goldenCup.src = '/golden_cup.png';
 
 function ResultModal({ info, onClose }) {
-  const closeBtnRef = useRef(null);
   const modalBodyRef = useRef(null);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      closeBtnRef.current?.focus();
-      modalBodyRef.current?.scrollIntoView({
-        behavior: 'instant',
-        inline: 'center',
-        block: 'center',
-      });
-    }, 0);
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  useEffect(() => {
-    const rootElement = document.documentElement;
-    const originalRootPosition = rootElement.style.position;
-    rootElement.style.position = 'relative';
-    return () => {
-      rootElement.style.position = originalRootPosition;
-      if (!rootElement.getAttribute('style')) {
-        rootElement.removeAttribute('style');
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const trapFocus = (e) => {
@@ -63,15 +38,6 @@ function ResultModal({ info, onClose }) {
         className="modal-body"
         onClick={(e) => e.stopPropagation()}
         onKeyDownCapture={handleEscapeKeyPress}
-        onFocus={(e) => {
-          if (e.target === e.currentTarget) {
-            e.target.scrollIntoView({
-              behavior: 'instant',
-              inline: 'center',
-              block: 'center',
-            });
-          }
-        }}
       >
         <h2 className="modal-title">{info.title}</h2>
         <p className="modal-score">Your score is {info.score}</p>
@@ -91,12 +57,7 @@ function ResultModal({ info, onClose }) {
           </figure>
         )}
         <p className="modal-message">{info.message}</p>
-        <button
-          type="button"
-          className="modal-btn"
-          onClick={onClose}
-          ref={closeBtnRef}
-        >
+        <button type="button" className="modal-btn" onClick={onClose} autoFocus>
           OK!
         </button>
       </div>
