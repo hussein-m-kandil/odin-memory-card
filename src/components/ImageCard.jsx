@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import loadingImg from '/loading.gif';
 import extractAltFromSrc from '../utils/extractAltFromSrc.js';
 
 function ImageCard({ src, onClick }) {
@@ -17,7 +16,7 @@ function ImageCard({ src, onClick }) {
         onError={handleLoadEnd}
       />
       <img
-        src={loadingImg}
+        src="/loading.gif"
         alt="Loading..."
         style={{ width: '32px', height: '32px', position: 'absolute' }}
       />

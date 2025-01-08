@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import goldenCup from '/golden_cup.png';
 import extractAltFromSrc from '../utils/extractAltFromSrc';
 
 function ResultModal({ info, onClose }) {
@@ -76,7 +75,7 @@ function ResultModal({ info, onClose }) {
           <img src={info.src} alt={extractAltFromSrc(info.src)} />
         ) : (
           <figure>
-            <img src={goldenCup} alt="Winner's golden cup." />
+            <img src="/golden_cup.png" alt="Winner's golden cup." />
             <figcaption>
               <a
                 className="attribute"
