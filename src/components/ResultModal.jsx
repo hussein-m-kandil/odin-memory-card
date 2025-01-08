@@ -1,6 +1,10 @@
 import { useEffect, useRef } from 'react';
 import extractAltFromSrc from '../utils/extractAltFromSrc';
 
+// Preload the golden cup image to avoid slow loading when mount it
+const goldenCup = new Image();
+goldenCup.src = '/golden_cup.png';
+
 function ResultModal({ info, onClose }) {
   const closeBtnRef = useRef(null);
   const modalBodyRef = useRef(null);
@@ -75,7 +79,7 @@ function ResultModal({ info, onClose }) {
           <img src={info.src} alt={extractAltFromSrc(info.src)} />
         ) : (
           <figure>
-            <img src="/golden_cup.png" alt="Winner's golden cup." />
+            <img src={goldenCup.src} alt="Winner's golden cup." />
             <figcaption>
               <a
                 className="attribute"
